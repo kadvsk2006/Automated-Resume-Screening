@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Ranker Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css?v=3">
+</head>
+<body>
+    <nav class="navbar mb-5">
+        <div class="container">
+            <span class="brand">
+                <i class="fas fa-layer-group me-2"></i>Resume Ranker Pro
+            </span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Upload Form -->
+        <div class="glass-card p-4 mb-5">
+            <h4 class="fw-bold mb-4">Job Description & Resume Upload</h4>
+            
+            <div class="mb-4">
+                <label class="form-label fw-bold">Job Description</label>
+                <textarea id="jd" class="form-control" rows="5" placeholder="Enter the complete job description here..."></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold">Upload Resumes (PDF)</label>
+                <div class="upload-zone" id="dropzone">
+                    <i class="fas fa-cloud-upload-alt fa-3x mb-3 text-muted"></i>
+                    <p class="mb-2 fw-bold">Drag & Drop PDF files here</p>
+                    <p class="text-muted mb-0">or click to browse</p>
+                    <input type="file" id="fileInput" class="d-none" multiple accept=".pdf">
+                </div>
+                <div id="fileList" class="mt-2 text-muted small"></div>
+            </div>
+
+            <div class="mb-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="csvCheck" checked>
+                    <label class="form-check-label" for="csvCheck">
+                        Search CSV Database (900+ resumes)
+                    </label>
+                </div>
+            </div>
+
+            <button id="rankBtn" class="btn btn-primary w-100">
+                <i class="fas fa-search me-2"></i>Analyze & Rank
+            </button>
+        </div>
+
+        <!-- Results Area -->
+        <div id="resultsArea" class="mt-5 d-none">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0 fw-bold">Screening Results</h5>
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="exportToCSV()">
+                    <i class="fas fa-file-export me-1"></i>Export as CSV
+                </button>
+            </div>
+            <!-- PDF Uploads Section -->
+            <div id="pdfSection" class="mb-5 d-none">
+                <h5 class="fw-bold mb-3">
+                    <i class="fas fa-file-pdf me-2 text-primary"></i>New Uploads
+                </h5>
+                <div class="glass-card p-0 overflow-hidden">
+                    <table class="table table-hover mb-0 align-middle">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Rank</th>
+                                <th>Candidate</th>
+                                <th>Score</th>
+                                <th>Skills</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pdfTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- CSV Database Section -->
+            <div id="csvSection" class="d-none">
+                <h5 class="fw-bold mb-3">
+                    <i class="fas fa-database me-2 text-purple"></i>Database Matches
+                </h5>
+                <div class="glass-card p-0 overflow-hidden">
+                    <table class="table table-hover mb-0 align-middle">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Rank</th>
+                                <th>Candidate</th>
+                                <th>Score</th>
+                                <th>Skills</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="csvTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Match Details Modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModalLabel">Match Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <h6 class="fw-bold mb-2">📄 Resume Preview</h6>
+                        <div id="resumePreviewBox" class="border rounded p-2 bg-light" style="max-height: 220px; overflow-y: auto; white-space: pre-wrap; font-size: 0.9rem;">
+                            <span class="text-muted small">Resume text not available.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/app.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+:root {
+    --primary: #0f172a;
+    --accent: #0ea5e9;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #334155;
+}
+
+body {
+    background: var(--bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+}
+
+.navbar {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 0;
+}
+
+.brand {
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 1.25rem;
+}
+
+.glass-card {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.upload-zone {
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #f1f5f9;
+}
+
+.upload-zone:hover {
+    border-color: var(--accent);
+    background: #e0f2fe;
+}
+
+.btn-primary {
+    background: var(--primary);
+    border: none;
+    padding: 12px 24px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+}
+
+.badge-pdf {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-csv {
+    background: #f3e8ff;
+    color: #6b21a8;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.skill-tag {
+    background: #f8fafc;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    margin: 2px;
+    display: inline-block;
+    border: 1px solid #e2e8f0;
+    color: #475569;
+}
+
+.text-purple {
+    color: #6b21a8;
+}
